@@ -1,5 +1,12 @@
 var app = angular.module('flapperNews', []);
 
+app.factory('post', [function(){
+    var o = {
+        posts:[]
+    };
+    return o;
+}]);
+
 app.controller('MainCtrl', [
     '$scope',
     function($scope) {
