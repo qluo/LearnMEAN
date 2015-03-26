@@ -10,7 +10,7 @@ app.factory('posts', [function(){
 app.controller('MainCtrl', [
     '$scope',
     'posts',
-    function($scope posts) {
+    function($scope, posts) {
     $scope.text = 'Hello world!';
     $scope.posts = posts.posts;
     $scope.posts = [
@@ -33,5 +33,18 @@ app.controller('MainCtrl', [
     $scope.incrementUpvotes = function(post) {
         post.upvotes += 1;
     };
+    }
+]);
+
+app.config([
+    '$stateProvider',
+    '$urlRouterProvider',
+    function($stateProvider, $urlRouterProvider) {
+        $stateProvider.state('home',{
+            url:'/home',
+            templateUrl: '/home.html',
+            controller: 'MainCtrl'
+        });
+        $urlRouterProvider.otherwise('home');
     }
 ]);
